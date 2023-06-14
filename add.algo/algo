@@ -1,0 +1,33 @@
+function isPalindrome(s,i) {
+ return(i=i||0)<0||i>=s.length>>1||s[i]==s[s.length-1-i]&&isPalindrome(s,++i);
+}
+
+function checkPalindrom(str) {
+    return str == str.split('').reverse().join('');
+}
+
+var dt = new Date();
+var i;
+var max = 1000000;
+for(i = 0; i < max; i++) {
+  isPalindrome('racecar');
+}
+var isPalindromeTime = Date.now() - dt.getTime();
+
+dt = new Date();
+for(i = 0; i < max; i++) {
+  checkPalindrom('racecar');
+}
+var checkPalindromTime = Date.now() - dt.getTime();
+
+var factor;
+var message;
+if (isPalindromeTime < checkPalindromTime) {
+  factor = checkPalindromTime / isPalindromeTime;
+  message = 'isPalindrome is faster than checkPalindrom by ~' + factor.toFixed(2) + ' times.';
+} else {
+  factor = isPalindromeTime / checkPalindromTime;
+  message = 'checkPalindrom is faster than isPalindrome by ~' + factor.toFixed(2) + ' times.';
+}
+console.log(message);
+
